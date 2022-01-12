@@ -2,17 +2,17 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   entry: "./index.js",
   output: {
     filename: "bundle.[hash].js",
     path: path.resolve(__dirname, "dist"),
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "./index.html",
-    }),
-  ],
+  // plugins: [
+  //   new HtmlWebpackPlugin({
+  //     template: "./index.html",
+  //   }),
+  // ],
   resolve: {
     modules: [__dirname, "src", "node_modules"],
     extensions: ["*", ".js", ".jsx", ".tsx", ".ts"],
@@ -34,6 +34,18 @@ module.exports = {
       }, 
     ],
   },
+  devServer: {
+    static: {
+      publicPath: '/',
+      directory: path.resolve(__dirname)
+    }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Development',
+      template: 'index.html'
+    }),
+  ],
   performance: {
     hints: false,
     maxEntrypointSize: 512000,

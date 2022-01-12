@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
-import WorkoutCreator from '../Components/WorkoutCreator';
-import WorkoutDisplay from '../Components/WorkoutDisplay';
+import WorkoutCreator from '../Components/WorkoutCreator.jsx';
+import WorkoutDisplay from '../Components/WorkoutDisplay.jsx';
 
 const mapStateToProps = state => ({
 

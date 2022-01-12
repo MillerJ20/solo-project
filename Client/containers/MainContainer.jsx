@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import WorkoutContainer from './WorkoutContainer';
+import WorkoutContainer from './WorkoutContainer.jsx';
 
 const mapStateToProps = state => ({
 

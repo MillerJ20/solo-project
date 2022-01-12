@@ -5,7 +5,7 @@ const WorkoutDisplay = props => {
   return (
     <div className='displayBox'>
       <h4>Journal Entries</h4>
-      <Entry />
+      <Entry/>
     </div>
   );
 };
