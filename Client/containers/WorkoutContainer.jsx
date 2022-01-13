@@ -11,8 +11,12 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  addEntry: newEntry => {
-    actions.addEntryCreator(dispatch, newEntry)
+  fetchEntries: () => actions.fetchEntriesActionCreator(dispatch),
+
+  addEntry: entryInfo => actions.addEntryCreator(dispatch, entryInfo),
+
+  updateNewEntry: newEntryValue => { 
+    dispatch(actions.setNewEntryActionCreator(newEntryValue)) 
   }
 })
 
@@ -23,8 +27,8 @@ class WorkoutContainer extends Component {
   render() {
     return(
       <div className="innerbox">
-        <WorkoutCreator addEntry={this.props.addEntry}/>
-        <WorkoutDisplay />
+        <WorkoutCreator addEntry={this.props.addEntry} updateNewEntry={this.props.updateNewEntry} newEntry={this.props.newEntry} fetchEntries={this.props.fetchEntries}/>
+        <WorkoutDisplay fetchEntries={this.props.fetchEntries} entryList={this.props.entryList} totalEntries={this.props.totalEntries}/>
       </div>
     )
   }

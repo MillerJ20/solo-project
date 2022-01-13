@@ -4,6 +4,7 @@ const db = require('../Models/workoutModels');
 
 const workoutController = {};
 
+const entryList = `SELECT * FROM workoutentry`
 const workoutAdder = `INSERT INTO workoutentry (journal_entry) VALUES ($1) RETURNING *`
 
 workoutController.addEntry = async (req, res, next) => {
@@ -24,5 +25,20 @@ workoutController.addEntry = async (req, res, next) => {
     )
   }
 }
+
+workoutController.getEntries = (req, res, next) => {
+  db.query(entryList)
+  .then((data) => {
+    res.locals.entries = data.rows;
+    return next();
+  })
+  .catch ((e) => {
+    console.log(e);
+    return next({
+      log: `workoutController.getEntries could not find the list of entries in the DB`,
+      message: { err: `Couldn't retrieve entryList, check server logs` },
+    });
+  });
+};
 
 module.exports = workoutController;
