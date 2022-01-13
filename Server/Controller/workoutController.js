@@ -12,6 +12,7 @@ workoutController.addEntry = async (req, res, next) => {
     const params = [journal_entry];
     const result = await db.query(workoutAdder, params);
     res.locals.journalEntry = result.rows[0];
+    console.log(res.locals.journalEntry);
     return next();
   }
   catch (err) {

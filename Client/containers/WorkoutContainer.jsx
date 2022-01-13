@@ -5,11 +5,15 @@ import WorkoutCreator from '../Components/WorkoutCreator.jsx';
 import WorkoutDisplay from '../Components/WorkoutDisplay.jsx';
 
 const mapStateToProps = state => ({
-
+  totalEntries: state.workouts.totalEntries,
+  entryList: state.workouts.entryList,
+  newEntry: state.workouts.newEntry,
 })
 
 const mapDispatchToProps = dispatch => ({
-
+  addEntry: newEntry => {
+    actions.addEntryCreator(dispatch, newEntry)
+  }
 })
 
 class WorkoutContainer extends Component {
@@ -19,7 +23,7 @@ class WorkoutContainer extends Component {
   render() {
     return(
       <div className="innerbox">
-        <WorkoutCreator />
+        <WorkoutCreator addEntry={this.props.addEntry}/>
         <WorkoutDisplay />
       </div>
     )

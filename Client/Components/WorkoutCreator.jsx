@@ -4,8 +4,10 @@ const WorkoutCreator = props => (
   <div>
     <h1>Input a New Workout!</h1>
     <label>What did you do today?</label>
-    <input></input>
-    <button>Submit Entry</button>
+    <input
+        
+    />
+    <button onClick={() =>  { props.addEntry() }}>Submit Entry</button>
     <hr size="2" width="100%"/>
   </div>
 );
