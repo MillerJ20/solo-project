@@ -26,6 +26,7 @@ export const addEntryCreator = (dispatch, entryInfo) => {
   })
   .then(res=> res.json())
   .then(data => {
+    console.log(data);
     dispatch({
       type: types.ADD_ENTRY,
       payload: data.entryInfo,

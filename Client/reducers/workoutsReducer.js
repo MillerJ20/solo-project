@@ -1,4 +1,5 @@
 import * as types from '../constants/actionTypes';
+import Entry from '../Components/Entry';
 
 const initialState = {
   totalEntries: 0,
@@ -17,6 +18,7 @@ const workoutsReducer = (state = initialState, action) => {
     case types.ADD_ENTRY: {
       lastEntryId = state.lastEntryId +1;
       totalEntries = state.totalEntries +1;
+      
       const newWorkout = {
         'Workout ID': lastEntryId,
         'Workout Description': action.payload
